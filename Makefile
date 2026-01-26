@@ -16,7 +16,7 @@ docker-compose-no-db:
 	docker compose -f docker-compose.no-db.yml up 
 
 podman-compose-no-db:
-	podman-compose -f docker-compose.no-db.yml up 
+	podman-compose -f docker-compose.no-db.yml up -d
 
 # build:
 # 	docker build -t $(IMAGE_NAME) .
