@@ -10,7 +10,7 @@ docker-run:
 	docker build -t todo-app . && docker rm -f todo-app 2>/dev/null || true && docker run --env-file .env -p 8080:8080 --name todo-app todo-app
 
 podman-run:
-	podman build -t todo-app . && podman rm -f todo-app 2>/dev/null || true && podman run --env-file .env -p 8080:8080 --name todo-app todo-app
+	podman build -t todo-app . && podman rm -f todo-app 2>/dev/null || true && podman run --env-file .env -p 8080:8080 --name todo-app todo-app -d
 
 docker-compose-no-db:
 	docker compose -f docker-compose.no-db.yml up 
