@@ -3,35 +3,41 @@ IMAGE_NAME=todo-app:latest
 CONTAINER_NAME=todo-app
 PORT=8080
 
-
-
 dev:
 	@set -a && source ./.env && ./mvnw spring-boot:run
 
-
-dev2:
+docker-run:
 	docker build -t todo-app . && docker rm -f todo-app 2>/dev/null || true && docker run --env-file .env -p 8080:8080 --name todo-app todo-app
 
-build:
-	docker build -t $(IMAGE_NAME) .
+podman-run:
+	podman build -t todo-app . && podman rm -f todo-app 2>/dev/null || true && podman run --env-file .env -p 8080:8080 --name todo-app todo-app
 
-run:
-	docker run -d \
-		--name $(CONTAINER_NAME) \
-		-p $(PORT):8080 \
-		-e SPRING_PROFILES_ACTIVE=local \
-		$(IMAGE_NAME)
+docker-compose-no-db:
+	docker compose -f docker-compose.no-db.yml up 
 
-stop:
-	docker stop $(CONTAINER_NAME) || true
+podman-compose-no-db:
+	podman-compose -f docker-compose.no-db.yml up 
 
-rm:
-	docker rm $(CONTAINER_NAME) || true
+# build:
+# 	docker build -t $(IMAGE_NAME) .
 
-restart: stop rm build run
+# run:
+# 	docker run -d \
+# 		--name $(CONTAINER_NAME) \
+# 		-p $(PORT):8080 \
+# 		-e SPRING_PROFILES_ACTIVE=local \
+# 		$(IMAGE_NAME)
 
-logs:
-	docker logs -f $(CONTAINER_NAME)
+# stop:
+# 	docker stop $(CONTAINER_NAME) || true
+
+# rm:
+# 	docker rm $(CONTAINER_NAME) || true
+
+# restart: stop rm build run
+
+# logs:
+# 	docker logs -f $(CONTAINER_NAME)
 
 
 

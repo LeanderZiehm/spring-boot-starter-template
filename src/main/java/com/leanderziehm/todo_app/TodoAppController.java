@@ -8,7 +8,7 @@ public class TodoAppController {
 
     @GetMapping("/")
     public static String getIndex(){
-        return "hi";
+        return "hi v0.0.1";
     }
 
 }
