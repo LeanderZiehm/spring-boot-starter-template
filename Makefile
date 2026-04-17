@@ -4,7 +4,7 @@ CONTAINER_NAME=todo-app
 PORT=8080
 
 dev:
-	@set -a && source ./.env && ./mvnw spring-boot:run
+	@set -a && . ./.env && ./mvnw spring-boot:run
 
 docker-run:
 	docker build -t todo-app . && docker rm -f todo-app 2>/dev/null || true && docker run --env-file .env -p 8080:8080 --name todo-app todo-app
