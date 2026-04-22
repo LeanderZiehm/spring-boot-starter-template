@@ -3,8 +3,35 @@ IMAGE_NAME=todo-app:latest
 CONTAINER_NAME=todo-app
 PORT=8080
 
-dev:
+run:
 	@set -a && . ./.env && ./mvnw spring-boot:run
+
+database: 
+	podman run --replace -d --name postgres -e POSTGRES_PASSWORD=secretpassword -p 5432:5432 -v pgdata:/var/lib/postgresql docker.io/library/postgres:18 && podman ps
+
+
+create-env:
+	cp -n .env.example .env
+
+
+delete-db:
+	@read -p "Delete pgdata volume? [y/N] " ans; \
+	if [ "$$ans" = "y" ] || [ "$$ans" = "Y" ]; then \
+		echo "Stopping/removing container..."; \
+		podman rm -f postgres >/dev/null 2>&1 || true; \
+		echo "Removing volume..."; \
+		if podman volume rm pgdata; then \
+			echo "Volume deleted"; \
+		else \
+			echo "Failed to delete volume"; \
+			exit 1; \
+		fi; \
+	else \
+		echo "Aborted"; \
+	fi
+
+
+
 
 docker-run:
 	docker build -t todo-app . && docker rm -f todo-app 2>/dev/null || true && docker run --env-file .env -p 8080:8080 --name todo-app todo-app
