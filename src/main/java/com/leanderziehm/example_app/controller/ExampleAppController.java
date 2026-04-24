@@ -1,6 +1,7 @@
-package com.leanderziehm.example_app;
+package com.leanderziehm.example_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.leanderziehm.example_app.model.ExampleEntity;
+import com.leanderziehm.example_app.service.ExampleService;
 import com.leanderziehm.example_app.utils.Utils;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,7 +29,7 @@ public class ExampleAppController {
         return exampleService.addExample().toString();
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public String removeExample(@RequestParam(name="id",required = false) String idString) {
         System.out.println(idString);
         Integer id = Utils.parseOrDefault(idString, null);

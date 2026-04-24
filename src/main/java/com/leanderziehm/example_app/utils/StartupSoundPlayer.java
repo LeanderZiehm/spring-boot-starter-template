@@ -1,4 +1,4 @@
-package com.leanderziehm.example_app;
+package com.leanderziehm.example_app.utils;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

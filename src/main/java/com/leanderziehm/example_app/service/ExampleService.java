@@ -1,8 +1,11 @@
-package com.leanderziehm.example_app;
+package com.leanderziehm.example_app.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.leanderziehm.example_app.model.ExampleEntity;
+import com.leanderziehm.example_app.repository.ExampleRepository;
 
 @Service
 public class ExampleService {
