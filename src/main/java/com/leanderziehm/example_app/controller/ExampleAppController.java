@@ -59,11 +59,11 @@ public class ExampleAppController {
         return exampleService.listExamples().toString();
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public void method(HttpServletResponse httpServletResponse) {
-        String url = "/index.html"; //"/swagger-ui/index.html"; 
-        httpServletResponse.setHeader("Location", url);
-        httpServletResponse.setStatus(302);
-    }
+    // @RequestMapping(value = "/redirect", method = RequestMethod.GET)
+    // public void method(HttpServletResponse httpServletResponse) {
+    //     String url = "/index.html"; //"/swagger-ui/index.html"; 
+    //     httpServletResponse.setHeader("Location", url);
+    //     httpServletResponse.setStatus(302);
+    // }
 
 }
