@@ -1,6 +1,6 @@
-APP_NAME=todo-app
-IMAGE_NAME=todo-app:latest
-CONTAINER_NAME=todo-app
+APP_NAME=example-app
+IMAGE_NAME=example-app:latest
+CONTAINER_NAME=example-app
 PORT=8080
 
 run:
@@ -34,10 +34,10 @@ delete-db:
 
 
 docker-run:
-	docker build -t todo-app . && docker rm -f todo-app 2>/dev/null || true && docker run --env-file .env -p 8080:8080 --name todo-app todo-app
+	docker build -t example-app . && docker rm -f example-app 2>/dev/null || true && docker run --env-file .env -p 8080:8080 --name example-app example-app
 
 podman-run:
-	podman build -t todo-app . && podman rm -f todo-app 2>/dev/null || true && podman run --env-file .env -p 8080:8080 --name todo-app todo-app -d
+	podman build -t example-app . && podman rm -f example-app 2>/dev/null || true && podman run --env-file .env -p 8080:8080 --name example-app example-app -d
 
 docker-compose-no-db:
 	docker compose -f docker-compose.no-db.yml up 
@@ -69,7 +69,7 @@ podman-compose-no-db:
 
 
 
-# APP_NAME=todo-app
+# APP_NAME=example-app
 
 # .PHONY: build run up down logs clean
 

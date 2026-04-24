@@ -1,13 +1,13 @@
-package com.leanderziehm.todo_app;
+package com.leanderziehm.example_app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TodoAppApplication {
+public class ExampleAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TodoAppApplication.class, args);
+		SpringApplication.run(ExampleAppApplication.class, args);
 	}
 
 }

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.leanderziehm</groupId>
-	<artifactId>todo-app</artifactId>
+	<artifactId>example-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>todo-app</name>
-	<description>Todo app with Spring Boot and Spring Security</description>
+	<name>example-app</name>
+	<description>Example app with Spring Boot and Spring Security</description>
 	<url/>
 	<licenses>
 		<license/>

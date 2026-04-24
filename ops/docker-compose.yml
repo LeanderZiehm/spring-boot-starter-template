@@ -1,33 +1,33 @@
 services:
   postgres:
     image: postgres:18
-    container_name: todo-postgres
+    container_name: example-postgres
     environment:
-      POSTGRES_DB: todo
-      POSTGRES_USER: todo
-      POSTGRES_PASSWORD: todo
+      POSTGRES_DB: example
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U todo"]
+      test: ["CMD-SHELL", "pg_isready -U example"]
       interval: 5s
       timeout: 5s
       retries: 5
 
   app:
     build: .
-    container_name: todo-app
+    container_name: example-app
     depends_on:
       postgres:
         condition: service_healthy
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/todo
-      SPRING_DATASOURCE_USERNAME: todo
-      SPRING_DATASOURCE_PASSWORD: todo
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/example
+      SPRING_DATASOURCE_USERNAME: example
+      SPRING_DATASOURCE_PASSWORD: example
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     restart: unless-stopped
 
